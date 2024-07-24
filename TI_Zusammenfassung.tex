@@ -13,6 +13,11 @@
 \usetikzlibrary{automata, positioning}
 
 
+\newcommand{\gr}[1]{{\color{Green}#1}}
+\newcommand{\bl}[1]{{\color{RoyalBlue}#1}}
+\newcommand{\rd}[1]{{\color{Red}#1}}
+
+
 \title{Theoretische Informatik}
 \author{Zusammenfassung}
 \date{SoSe2024}
@@ -185,21 +190,75 @@ Beispiel:
 
 \section{Äquivalenz von DEA und NEA}
 
-\subsubsection{Satz von Rabin und Scott}
+\subsection{Satz von Rabin und Scott}
 
 Jede von einem NEA akzeptierte Sprache L ist auch von einem DEA akzeptierbar.
 
-\subsubsection{Potenzmengenkonstruktion}
+\subsection{Potenzmengenkonstruktion (NEA $\rightarrow$ DEA)}
 
-!!!TODO!!!
+Potezmenge ist die Menge aller Teilmengen
+
+
+
+\vspace{2em}
+
+Beispiel:
+
+\vspace{0.5em}
+
+\begin{minipage}[h]{0.40\textwidth}
+    \centering \includegraphics[width=0.75\textwidth]{NEA-01.png}
+\end{minipage}
+\begin{minipage}[h]{0.10\textwidth}
+    \centering $\rightarrow$
+\end{minipage}
+\begin{minipage}[h]{0.40\textwidth}
+    \centering \includegraphics[width=0.85\textwidth]{DEA-01.png}
+\end{minipage}
+
+\vspace{0.5em}
+
+\begin{enumerate}
+    \item Potenzmenge bilden, $\mathcal{P}\{1, 2\} = \{\{\varnothing \}, \{1\}, \{2\}, \{1, 2\}\}$
+    \item Jede Teilmenge ist Zustand des DEA
+    \item Wohin kommt man von von jedem NEA Zustand?
+    \begin{itemize}
+        \item $\delta(\{1\}, a) = 1 \land 2 \rightarrow \{1, 2\}$ 
+        \item $\delta(\{1\}, b) = \{\varnothing\}$
+        \item $\delta(\{2\}, a) = \{\varnothing\}$
+        \item $\delta(\{2\}, b) = \{2\}$
+        \item $\delta(\{2\}, b) = \{2\}$
+        \item $\delta(\{1, 2\}, a) = \gr{\delta(\{1\}, a)} \cup \rd{\delta(\{2\}, a)} = \gr{1 \land 2} \cup \rd{\varnothing} = \{1, 2\}$
+        \item $\delta(\{\varnothing\}, a) \land \delta(\{\varnothing\}, b) = \varnothing \rightarrow \{\varnothing\}$
+    \end{itemize}
+    \item Startzustand bleibt gleich
+    \item Jede Teilmenge, in der der urspr"ungliche Endzustand vorkommt, wird wieder zum Endzustand, $F = 2 \rightarrow F' = \{\{2\}, \{1, 2\}\}$
+\end{enumerate}
 
 \newpage
 
+
 \section{Regex}
 
-!!!TODO!!!
 
-\subsubsection{Satz von Kleene}
+\begin{itemize}
+    \item \textbf{.} : Beliebiges einzelnes Zeichen außer Zeilenumbruch
+    \item \textbf{*} : Null oder mehr Wiederholungen
+    \item \textbf{$+$} : Eine oder mehr Wiederholungen
+    \item \textbf{\{n\}} : Genau n Wiederholungen
+    \item \textbf{\{n,\}} : Mindestens n Wiederholungen
+    \item \textbf{\{n, m\}} : Zwischen n und m Wiederholungen
+    \item \textbf{[ ]} : Zeichenklasse (z.B. [a-z] für alle Kleinbuchstaben)
+    \item \textbf{[ \^\ ]} : Negierte Zeichenklasse
+\end{itemize}
+
+
+Email-Adressen: \verb|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|
+
+
+
+
+\subsection{Satz von Kleene}
 
 Die Menge der durch regul"are Ausdr"ucke (Regex) beschreibbaren Sprachen ist genau die Menge der regul"aren Sprachen.
 
@@ -227,9 +286,27 @@ Eine Sprache L ist genau dann regul"ar, wenn der Index $R_L$ endlich ist!
 
 \section{Minimalautomaten}
 
-!!!TODO!!!
-
 \subsection{Table-Filling-Algorithmus}
+
+Nur f"ur DEAs!
+
+\begin{enumerate}
+    \item Eventuell nicht erreichbare Zust"ande entfernen
+    \item Tabelle aus Zust"anden erstellen \{$q$, $q'$\}, $q \neq q'$
+    \item Zustandspaar markieren, bei dem immer \textbf{ein} Zustand ein Endzustand ist
+    \item Wiederhole solange, bis keine Markierungen mehr dazu kommen
+    \begin{itemize}
+            \item F"ur jedes unmarkierte Paar \{$q$, $q'$\} und jeden Buchstaben $a \in \Sigma$
+            \begin{itemize}
+                \item Wenn \{$\delta(q, a)$, $\delta(q', a)$\} markiert ist, dann das Paar \{$q$, $q'$\} selbst markieren
+            \end{itemize}
+    \end{itemize}
+    \item Verschmelze unmarkierte Zustandspaare
+\end{enumerate}
+
+
+
+
 
 \newpage
 
@@ -392,6 +469,16 @@ Startkonfiguration $q_0\vec{w}$:
     \item S/L-Kopf steht auf erstem Buchstaben von $w$
     \item Restliches Band mit Blanks $\Box$ bef"ullt
 \end{itemize}
+
+\subsection{Linear beschr"ankte Turing-Maschine}
+
+Eine Turing Maschine M ist linear beschr"ankt, wenn $|\vec{w}| < \infty$, also endlich ist.
+
+\section{Satz von Kuroda}
+
+Die von linear beschränkten, nicht-deterministischen Turing-Maschinen akzeptierbaren Sprachen sind genau die kontextsensitiven Sprachen $\mathcal{L}1$
+
+
 
 
 \end{document}

@@ -1,0 +1,237 @@
+\documentclass[11pt, a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+
+\title{Theoretische Informatik}
+\author{Zusammenfassung}
+\date{24.07.2024}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+\newpage
+
+
+% --- START DES EIGENTLICHEN INHALTS -------------------------------------------------
+
+\section{Allgemein}
+
+\vspace{0.5em}
+
+\subsection{Alphabete und W"orter}
+
+\begin{itemize}
+    \item Ein Alphabet $\Sigma$ ist eine endliche Menge unterscheidbarer Symbole
+    \item Element $\sigma \in \Sigma$ ist ein Zeichen des Alphabets $\Sigma$
+    \item Jedes Element $\omega \in \Sigma^*$  ist ein Wort "uber $\Sigma$
+    \item $\varepsilon$ = Leeres Wort
+    \item $\Sigma^*$: Menge aller W"orter "uber $\Sigma$
+    \item $\Sigma^+$: Menge aller W"orter "uber $\Sigma$ mit mind. 1 Element
+    \item $|\omega|$: L"ange eines Wortes ($|\varepsilon|$ = 0)
+\end{itemize}
+
+\vspace{1em}
+
+\subsection{Grammatiken}
+
+Eine Grammatik G ist ein 4-Tupel (V, $\Sigma$, P, S):
+\begin{itemize}
+    \item V: endliche Menge an Nicht-Terminal-Symbolen
+    \item $\Sigma$: endliche Menge an Terminal-Symbolen (V$\cap\Sigma=\varnothing$)
+    \item P: endliche Menge an Produktionsregeln
+    \item S: Startsymbol (S$\in$V)
+\end{itemize}
+
+\newpage
+
+
+\section{Chomsky-Hierarchie}
+
+\vspace{0.5em}
+
+\subsection{Typ 0 ($\mathcal{L}0$) - Phrasenstrukturgrammatiken}
+
+\begin{itemize}
+    \item Beliebige Kombination aus T- und NT-Symbolen
+\end{itemize}
+
+\vspace{0.5em}
+
+\subsection{ Typ 1 ($\mathcal{L}1$) - Kontextsensitive Grammatiken}
+
+\begin{itemize}
+    \item $|l|\leq|r|$
+    \item L"ange des Wortes steigt
+    \item $S\rightarrow\varepsilon$ erlaubt, wenn S auf \textbf{keiner} rechten Seite einer Regel steht!
+\end{itemize}
+
+\raggedright
+\textbf{Beispiel:}
+
+$S \rightarrow S'$ | $\varepsilon$ \\
+$S' \rightarrow aS'Bc$ | $abc$ \\
+$cB \rightarrow Bc$ \\
+$bB \rightarrow bb$ 
+
+\vspace{0.5em}
+
+Das Nichtterminal S' braucht man nur, damit die Bedingung der Sonderregel erfüllt ist. 
+Das Nichtterminal B wird mal zur Satzform Bc und mal zu bb, je nachdem ob B im \textbf{Kontext} c oder b steht. 
+
+\vspace{0.5em}
+
+\subsection{Typ 2 ($\mathcal{L}2$) - Kontextfreie Grammatiken}
+
+Beim Ableiten in Typ-1-Grammatiken muss man immer aufpassen, dass das Nichtterminal auch im richtigen Kontext steht. 
+Das Erzeugen von Sätzen ist viel leichter, wenn die Grammatik kontextfrei ist. 
+
+Eine Grammatik G ist vom Typ 2, wenn sie vom Typ 1 ist und zusätzlich auf der linken Seite jeder Regel genau \textbf{ein} Nichtterminal steht!
+
+\begin{itemize}
+    \item $l \in V$
+    \item $X \rightarrow \varepsilon$ immer erlaubt
+\end{itemize}
+
+\vspace{0.5em}
+
+\subsection{Typ 3 ($\mathcal{L}3$) - Reguläre Grammatik}
+
+Eine Grammatik G ist vom Typ 3, wenn sie vom Typ 2 ist und zusätzlich folgende Regeln hat:
+
+\begin{itemize}
+    \item $A \rightarrow b$
+    \item $A \rightarrow bC$
+    \item $A \rightarrow \varepsilon$
+\end{itemize}
+
+
+\newpage
+
+\section{Deterministischer Endlicher Automat (DEA)}
+
+Eine DEA M ist ein 5-Tupel (Q, $\Sigma$, $\delta$, $q_0$, F):
+
+\begin{itemize}
+    \item Q: endliche Zustandsmenge
+    \item $\Sigma$: endliches Alphabet
+    \item $\delta$: $Q \times \Sigma \rightarrow Q$ Übergangsfunktionen
+    \item $q_0$: Startzustand
+    \item F: Menge der akzeptierten Endzust"ande
+\end{itemize}
+
+\vspace{2em}
+Beispiel:
+\vspace{1em}
+
+\includegraphics[width=0.4\textwidth]{DEA-00.png}
+
+\begin{itemize}
+    \item Q $= \{q_0, q_1, q_2\}$
+    \item $\Sigma =$ \{0, 1\}
+    \item $q_0 = q_0$
+    \item F $= q_2$
+    \item $\delta$:
+    \begin{itemize}[label={}]
+        \item $\delta(q_0, 0) = q_0$
+        \item $\delta(q_0, 1) = q_1$
+        \item $\delta(q_1, 0) = q_2$
+        \item $\delta(q_1, 1) = q_1$
+        \item $\delta(q_2, 0) = q_1$
+        \item $\delta(q_2, 1) = q_1$
+      \end{itemize}
+\end{itemize}
+
+\newpage
+
+\section{Nicht-deterministischer Endlicher Automat (NEA)}
+
+Eine NEA M ist ein 5-Tupel (Q, $\Sigma$, $\delta$, $q_0$, F):
+
+\begin{itemize}
+    \item Q: endliche Zustandsmenge
+    \item $\Sigma$: endliches Alphabet
+    \item $\delta$: $Q \times \Sigma \rightarrow Q$ Übergangsfunktionen
+    \item $q_0$: Menge der Startzust"ande
+    \item F: Menge der akzeptierten Endzust"ande
+\end{itemize}
+
+\vspace{2em}
+Beispiel:
+\vspace{1em}
+
+\begin{minipage}[h]{0.45\textwidth}
+    $S \rightarrow aS$ | bS | cS | aA \\
+    $A \rightarrow bB$ | cC \\
+    $B \rightarrow aB$ | bB | cB | $\varepsilon$ \\
+    $c \rightarrow aB$
+\end{minipage}
+\begin{minipage}[h]{0.45\textwidth}
+    \includegraphics[width=0.7\textwidth]{NEA-00.png}
+\end{minipage}
+
+\newpage
+
+\section{Äquivalenz von DEA und NEA}
+
+\subsubsection{Satz von Rabin und Scott}
+
+Jede von einem NEA akzeptierte Sprache L ist auch von einem DEA akzeptierbar.
+
+\subsubsection{Potenzmengenkonstruktion}
+
+!!!TODO!!!
+
+\newpage
+
+\section{Regex}
+
+!!!TODO!!!
+
+\subsubsection{Satz von Kleene}
+
+Die Menge der durch regul"are Ausdr"ucke (Regex) beschreibbaren Sprachen ist genau die Menge der regul"aren Sprachen.
+
+\vspace{0.5em}
+
+$\rightarrow$ Alle endlichen Sprachen sind durch regul"are Ausdr"ucke beschreibbar
+
+\newpage
+
+
+\section{Pumping Lemma}
+
+Das Pumping-Lemma wird verwendet, um zu beweisen, dass eine Sprache sicher nicht regul"ar ist.
+
+!!!TODO!!!
+
+\newpage
+
+\section{Satz von Myhill und Nerode}
+
+Eine Sprache L ist genau dann regul"ar, wenn der Index $R_L$ endlich ist!
+
+\newpage
+
+
+\section{Minimalautomaten}
+
+!!!TODO!!!
+
+\subsection{Table-Filling-Algorithmus}
+
+\newpage
+
+
+\section{Kontextfreie Sprachen ($\mathcal{L}2 $)}
+
+
+\end{document}

@@ -320,4 +320,78 @@ Konfiguration eines PDA gegeben durch 3-Tupel ($Q$, $\Sigma^*$, $\Gamma^*$):
 
 \section{CYK-Algorithmus}
 
+Beispiel:
+
+\begin{itemize}
+    \item S $\rightarrow$ ST | TU | US
+    \item T $\rightarrow$ SS | a
+    \item U $\rightarrow$ TT | b
+\end{itemize}
+
+Wort: \textbf{aabab}
+
+\vspace{2em}
+
+\includegraphics[width=0.5\textwidth]{CYK-00.png}
+
+\vspace{2em}
+
+Nur wenn S (Startsymbol) ganz oben in der Pyramide steht, wird das Wort akzeptiert!
+
+\newpage
+
+
+\section{Turing-Maschine}
+
+\hl{Eine Turing-Maschine M ist ein 7-Tupel (Q, $\Sigma$, $\Gamma$, $\delta$, $q_0$, $\Box$, F):}
+
+\begin{itemize}
+    \item Q: endliche Zustandsmenge
+    \item $\Sigma$: endliches Eingabealphabet
+    \item $\Gamma$: endliches Arbeitsalphabet ($\Sigma \subset \Gamma$)
+    \item $\delta$: "Ubergansfunktionen
+    \item $q_0$: Startzustand ($q_0 \in Q$)
+    \item $\Box$: Blank-Symbol ($\Box \in \Gamma - \Sigma$)
+    \item F: Menge der Endzust"ande
+\end{itemize}
+
+\vspace{1em}
+
+"Ubergansfunktionen:
+\begin{itemize}
+    \item Deterministisch: \qquad \qquad $\delta(q, a) = \delta(q', b, x)$
+    \begin{enumerate}
+        \item M befindet sich in Zustand $q$ und liest $a$ vom Band
+        \item M geht in Zustand $q'$ "uber und ersetzt das $a$ mit einem $b$
+        \item M f"uhrt Kopfbewegung $x \in \{l, n, r\}$
+      \end{enumerate}
+
+    \item Nicht-deterministisch:\qquad$\delta(q, a) \ni \delta(q', b, x)$
+\end{itemize}
+
+\vspace{1em}
+
+Konfiguration einer TM is ein Wort $k \in \Gamma^* Q \Gamma^*$:
+
+$k = \alpha q \beta$\\
+$k = \alpha_1...\alpha_m q \beta_1...\beta_n$
+
+\begin{itemize}
+    \item $q$: Aktueller Zustand
+    \item $\alpha$: Wort links des Schreib/Lese-Kopfes
+    \item $\beta$: Wort rechts des Kopfes
+\end{itemize}
+
+\vspace{1em}
+
+Startkonfiguration $q_0\vec{w}$:
+
+\begin{itemize}
+    \item $w \in \Sigma^*$ steht auf Band
+    \item M in Zustand $q_0$
+    \item S/L-Kopf steht auf erstem Buchstaben von $w$
+    \item Restliches Band mit Blanks $\Box$ bef"ullt
+\end{itemize}
+
+
 \end{document}

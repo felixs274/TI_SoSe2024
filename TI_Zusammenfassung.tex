@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
+\usepackage{soul}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{enumitem}
@@ -10,9 +12,10 @@
 \usepackage{tikz}
 \usetikzlibrary{automata, positioning}
 
+
 \title{Theoretische Informatik}
 \author{Zusammenfassung}
-\date{24.07.2024}
+\date{SoSe2024}
 
 \begin{document}
 \maketitle
@@ -118,7 +121,7 @@ Eine Grammatik G ist vom Typ 3, wenn sie vom Typ 2 ist und zusätzlich folgende 
 
 \section{Deterministischer Endlicher Automat (DEA)}
 
-Eine DEA M ist ein 5-Tupel (Q, $\Sigma$, $\delta$, $q_0$, F):
+\hl{Eine DEA M ist ein 5-Tupel (Q, $\Sigma$, $\delta$, $q_0$, F):}
 
 \begin{itemize}
     \item Q: endliche Zustandsmenge
@@ -154,7 +157,7 @@ Beispiel:
 
 \section{Nicht-deterministischer Endlicher Automat (NEA)}
 
-Eine NEA M ist ein 5-Tupel (Q, $\Sigma$, $\delta$, $q_0$, F):
+\hl{Eine NEA M ist ein 5-Tupel (Q, $\Sigma$, $\delta$, $q_0$, F):}
 
 \begin{itemize}
     \item Q: endliche Zustandsmenge
@@ -233,5 +236,88 @@ Eine Sprache L ist genau dann regul"ar, wenn der Index $R_L$ endlich ist!
 
 \section{Kontextfreie Sprachen ($\mathcal{L}2 $)}
 
+\subsection{Chomsky Normalform (CNF)}
+
+Regeln m"ussen folgende Formen haben:
+
+\begin{itemize}
+    \item $A \rightarrow BC$
+    \item $A \rightarrow a$
+    \item $S \rightarrow \varepsilon$
+\end{itemize}
+
+\subsection{Greibach Normalform}
+
+Eine $\varepsilon$-freie, kontextfrei Grammatik mit folgenden Regeln:
+
+\begin{itemize}
+    \item $A \rightarrow aB_1B_2B_3...B_k$
+    \item $k \geq 0$
+\end{itemize}
+
+\subsection{Konvertierung}
+
+!!!TODO!!!
+
+\newpage
+
+
+\section{Kellerautomaten}
+
+\hl{Ein Kellerautomat (PDA) M ist ein 6-Tupel (Q, $\Sigma$, $\Gamma$, $\delta$, $q_0$, $\#$):}
+
+\begin{itemize}
+    \item Q: endliche Zustandsmenge
+    \item $\Sigma$: endliches Bandalphabet
+    \item $\Gamma$: endliches Kelleralphabet
+    \item $\delta$: "Ubergansfunktionen
+    \item $q_0$: Startzustand ($q_0 \in Q$)
+    \item $\#$: "Urspr"ungliches Kellersymbol ($q_0 \in \Gamma$)
+\end{itemize}
+
+%Es gibt keinen expliziten Endzustand. Das Ende ist erreicht, wenn auf dem Stack kein Element mehr liegt, oder das Wort komplett gelesen wurde.
+
+\vspace{1em}
+
+Akzeptanz:
+\begin{itemize}
+    \item Kein akzeptierender Endzustand!
+    \item Akzeptanzkriterien für W"orter $x \in |Sigma^*$:
+    \begin{enumerate}
+        \item Wort komplett gelesen
+        \item Keller (Stack leer)
+    \end{enumerate}
+\end{itemize}
+
+\vspace{1em}
+
+Nicht-Determinismus:
+\begin{itemize}
+    \item Mehrere simultane "Uberg"ange m"oglich
+    \item Spontane "Uberg"ange ($a = \varepsilon$) m"oglich
+\end{itemize}
+
+\vspace{1em}
+
+Konfiguration eines PDA gegeben durch 3-Tupel ($Q$, $\Sigma^*$, $\Gamma^*$):
+\begin{itemize}
+    \item $q \in Q$: Momentaner Zustand
+    \item $w' \in \Sigma^*$: Noch zu lesender Anteil der Eingabe
+    \item $\gamma \in \Gamma^*$: Aktueller Kellerinhalt
+\end{itemize}
+
+\vspace{1em}
+
+"Ubergansfunktion:
+\begin{itemize}
+    \item $\delta$(q, a, A) $\ni$ ($q', B_1B_2...B_k$)
+    \item Wenn Automat in Zustand q ist, das Symbol a liest und A oben auf Stack liegt, wechselt er in Zustand $q'$ und ersetzt das A auf dem Stack durch $B_1B_2...B_k$
+\end{itemize}
+
+\newpage
+
+
+
+\section{CYK-Algorithmus}
 
 \end{document}

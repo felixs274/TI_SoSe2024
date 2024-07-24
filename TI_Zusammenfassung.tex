@@ -271,9 +271,95 @@ $\rightarrow$ Alle endlichen Sprachen sind durch regul"are Ausdr"ucke beschreibb
 
 \section{Pumping Lemma}
 
-Das Pumping-Lemma wird verwendet, um zu beweisen, dass eine Sprache sicher nicht regul"ar ist.
+%Das Pumping-Lemma wird verwendet, um zu beweisen, dass eine Sprache sicher nicht regul"ar ist.
 
-!!!TODO!!!
+\begin{itemize}
+    \item Wenn L erkennbar ist, dann existiert ein $p \in \mathbb{N}$
+    \item sodass f"ur alle W"orter w $\in L$ mit $|w| \geq p$ gilt:
+    \item Es gibt eine Zerlegung $w = \rd{x}\gr{y}\bl{z}$ mit $\gr{y} \neq \varepsilon$ und $|\rd{x}\gr{y}| \leq p$,
+    \item sodass f"ur alle $i \in \mathbb{N}$ gilt:
+    \item $\rd{x}\gr{y^i}\bl{z} \in L$
+\end{itemize}
+
+\vspace{2em}
+
+Beispiele:
+
+\vspace{2em}
+
+$L = \{ w \in \{a, b\}^* \quad | \quad |w|_a > |w|_b\}$ 
+
+\vspace{0.5em}
+
+Also eine Sprache, die aus beliebig vielen a und b besteht, aber immer mehr a als b hat.
+
+\vspace{1.5em}
+
+Sei $p \in \mathbb{N}$ gegeben
+
+\vspace{0.5em}
+
+Da unser Wort $|w| \geq p$ sein muss, bietet sich $a^{p+1} b^p$ an.
+
+\vspace{0.5em}
+
+Da $|\rd{x}\gr{y}| \leq p$ gilt, besteht $|\rd{x}\gr{y}|$ also nur aus a.
+
+\vspace{0.5em}
+
+Mit der Zerlegung in $w = \rd{x}\gr{y^i}\bl{z}$ und $i = 0$, h"atte man $|\rd{x}\bl{z}|_a \leq  |\rd{x}\bl{z}|_b$, also weniger a als b.
+
+
+\vspace{5em}
+
+
+$L = \{a^{n^2} \quad | \quad n \in \mathbb{N}\}$
+
+\vspace{1.5em}
+
+Sei $p \in \mathbb{N}$ gegeben
+
+\vspace{0.5em}
+
+Da unser Wort $|w| \geq p$ sein muss, bietet sich $w = a^{p^2}$ an.
+
+\vspace{0.5em}
+
+Sei Zerlegung $w = \rd{x}\gr{y^i}\bl{z}$ mit $|\rd{x}\gr{y}| \leq p$ gegeben.
+
+\vspace{0.5em}
+
+Erstes Wort ist $p^2 = |\rd{x}\gr{y}\bl{z}|$
+
+\vspace{0.5em}
+
+N"achst gr"oßere Wort ist $(p+1)^2 = p^2 + 2p + 1$
+
+\vspace{0.5em}
+
+Setze i=2, betrachte $\rd{x}\gr{y^2}\bl{z}$:
+
+\vspace{0.5em}
+
+$|\rd{x}\gr{y}\bl{z}| < |\rd{x}\gr{y^2}\bl{z}|$
+
+\vspace{0.5em}
+
+$|\rd{x}\gr{y^2}\bl{z}| = |\rd{x}\gr{y}\bl{z}| + |\gr{y}|$
+
+\qquad \quad $\leq$ $p^2$ \quad + p (Da y nach $|\rd{x}\gr{y}| \leq p$ h"ochsten L"ange p hat)
+
+\vspace{0.5em}
+
+$p^2 + p < p^2 + 2p + 1$
+
+\vspace{0.5em}
+
+Somit $\rd{x}\gr{y^2}\bl{z} \notin L$
+
+
+
+
 
 \newpage
 
@@ -304,8 +390,13 @@ Nur f"ur DEAs!
     \item Verschmelze unmarkierte Zustandspaare
 \end{enumerate}
 
+\vspace{3em}
 
+Beispiel Tabelle \{$q$, $q'$\}, $q \neq q'$:
 
+\vspace{0.5em}
+
+\includegraphics[width=0.4\textwidth]{Minimal-00.png}
 
 
 \newpage

@@ -569,7 +569,43 @@ Eine Turing Maschine M ist linear beschr"ankt, wenn $|\vec{w}| < \infty$, also e
 
 Die von linear beschränkten, nicht-deterministischen Turing-Maschinen akzeptierbaren Sprachen sind genau die kontextsensitiven Sprachen $\mathcal{L}1$
 
+\newpage
 
 
+
+\section{Berechnungskomplexität}
+
+\subsection{Zeitkomplexität}
+
+$T_M(\vec{x}) \equiv$ Anzahl der Schritte des Automaten mit Eingabe $\vec{x} \in \Sigma^*$
+
+\subsection{Platzkomplexität}
+
+$S_M(\vec{x}) \equiv$ Anzahl \textit{verschiedener} Zellen, die der Automat bei Eingabe $\vec{x} \in \Sigma^*$ besucht
+
+
+\section{Komplexitätstheorie}
+
+\subsection{Zeitkomplexität}
+
+\begin{itemize}
+    \item \textbf{P}: Von einer Deterministischen Turing-Maschine in polyzeit L"osbar
+    \item \textbf{NP}: Von einer Nicht-deterministischen Turing-Maschine in polyzeit L"osbar
+\end{itemize}
+
+
+\subsection{Gödelisierung}
+
+Beispiel:
+
+Angenommen, wir haben ein formales System mit den Symbolen \{a, b, c\} denen wir die Zahlen \{1, 2, 3\} zugeordnet haben. Eine Sequenz der Symbole 'a, b, c' wird dann wie folgt codiert:
+
+\begin{itemize}
+    \item a $\rightarrow$ 1
+    \item b $\rightarrow$ 2
+    \item c $\rightarrow$ 3
+\end{itemize}
+
+Die Sequenz 'a, b, c' wird zu der Zahl $2^1 \times e^2 \times 5^3 = 2 \times 9 \times 125 = 2250$ codiert.
 
 \end{document}

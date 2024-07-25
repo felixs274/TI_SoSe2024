@@ -365,7 +365,80 @@ Somit $\rd{x}\gr{y^2}\bl{z} \notin L$
 
 \section{Satz von Myhill und Nerode}
 
-Eine Sprache L ist genau dann regul"ar, wenn der Index $R_L$ endlich ist!
+Eine Sprache L ist genau dann regul"ar, wenn der Index $R_L$ endlich ist, also wenn es endlich viele "Aquivalenzklassen gibt!
+
+\vspace{0.5em}
+
+$xR_Ly \Leftrightarrow [\forall w \in \Sigma^* : xw \in L \Leftrightarrow yw \in L]$
+
+\vspace{3em}
+
+\textbf{Beispiele:}
+
+\vspace{2em}
+
+$L = \{w \in \{a,b\}^*$ | $w$ enth"alt gerade Anzahl von a's$\}$ \\
+$\rightarrow$ Beliebige Kombination aus a's und b's, aber immer eine gerade Anzahl an a's.
+
+\begin{enumerate}
+    \item "Aquivalenzklassen bestimmen
+    \begin{itemize}
+        \item W"orter mit gerade Anzahl an a's
+        \item W"orter mit ungerade Anzahl an a's
+    \end{itemize}
+    \item Endliche Anzahl an "Aquivalenzklassen und somit regul"ar
+\end{enumerate}
+
+\vspace{3em}
+
+$L = \{w \in \{0,1\}^*$ | $w$ enth"alt die Unterfolge 01$\}$
+
+\begin{enumerate}
+    \item "Aquivalenzklassen bestimmen
+    \begin{itemize}
+        \item $[\varepsilon]$ W"orter, die noch keine 0 enthalten
+        \item $[0]$ W"orter, die mindesten eine 0 enthalten, aber noch keine 01
+        \item $[1*]$ W"orter, die mindesten eine 1 enthalten, aber keine 01
+        \item $[01]$ W"orter, die mindestens ein 01 enthalten haben
+    \end{itemize}
+    \item Endliche Anzahl an "Aquivalenzklassen und somit regul"ar
+\end{enumerate}
+
+\newpage
+
+$L = \{a^nb^n$ | $n \geq 0 \}$
+
+\begin{enumerate}
+    \item Zeigen dass gilt: $xz \in L \Leftrightarrow yz \in L$
+    \item Betrachten wir W"orter der Forma $a^i$ und $a^j$ mit $i \neq j$. Sei $i < j$, dann:
+    \begin{itemize}
+        \item Wenn $z = b^i$, dann ist $a^ib^i \in L$
+        \item Wenn $z = b^i$, dann ist $a^jb^i \notin L$, weil $i < j$
+    \end{itemize}
+    \item Da es immer m"oglich ist, ein $z$ zu finden, das $a^i$ und $a^j$ unterschiedlich behandelt, sind $a^i$ und $a^j$ nicht "aquivalent!
+    \item F"ur jedes $n \geq 0$ ist $a^n$ in einer eigenen "Aquivalenzklasse
+    \item Dies bedeutet, dass es unendlich viele unterschiedliche "Aquivalenzklassen gibt, n"amlich eine für jedes $n$!
+    \item Folgt: $L$ ist nicht regul"ar
+\end{enumerate}
+
+\vspace{3em}
+
+$L = \{a^p$ | $p$ ist eine Primzahl $\}$
+
+\begin{enumerate}
+    \item Zeigen dass gilt: $xz \in L \Leftrightarrow yz \in L$
+    \item Betrachten wir W"orter der Forma $a^i$ und $a^j$ mit $i \neq j$. Sei $i$ eine Primzahl und $j$ nicht, dann:
+    \begin{itemize}
+        \item $a^i \in L$ (weil $i$ eine Primzahl ist)
+        \item $a^j \notin L$ (weil $j$ keine Primzahl ist)
+    \end{itemize}
+    \item F"ur jedes $n \geq 2$, das eine Primzahl ist, und jedes $m$, das keine Primzahl ist:\\ $a^n \equiv_L a^m \Leftrightarrow n=m$
+    \item Dies bedeutet, dass es unendlich viele unterschiedliche Äquivalenzklassen gibt, nämlich eine für jede Primzahl
+    \item Folgt: $L$ ist nicht regul"ar
+\end{enumerate}
+
+
+
 
 \newpage
 

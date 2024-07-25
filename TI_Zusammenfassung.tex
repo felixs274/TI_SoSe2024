@@ -59,6 +59,18 @@ Eine Grammatik G ist ein 4-Tupel (V, $\Sigma$, P, S):
     \item S: Startsymbol (S$\in$V)
 \end{itemize}
 
+\vspace{1em}
+
+\subsection{Modulo}
+
+\begin{itemize}
+    \item a mod b \quad : \quad Rest der Division von a durh b 
+    \begin{itemize}
+        \item Bsp.: 17 mod 5 = \rd{2} (weil 17 = (3 $\times$ 5)+\rd{2})
+    \end{itemize} 
+    \item $a \equiv r$ mod $b$ \quad : \quad a und r haben den selben Rest bei Division durch b
+\end{itemize}
+
 \newpage
 
 
@@ -591,6 +603,17 @@ Konfiguration eines PDA gegeben durch 3-Tupel ($Q$, $\Sigma^*$, $\Gamma^*$):
 
 \newpage
 
+\textbf{Beispiel Konfigurationssequenz}
+
+\vspace{1em}
+
+\includegraphics[width=0.6\textwidth]{PDA-00.png}
+
+\vspace{1em}
+
+$(q_0, aaba, S) \vdash (q_0, aaba, aS) \vdash (q_0, aba, S) \vdash (q_0, aba, AB) \vdash (q_0, aba, aBaB) \vdash (q_0, ba, BaB) \vdash (q_0, ba, baB) \vdash (q_0, a, aB) \vdash (q_0, \varepsilon, B) \vdash (q_0, \varepsilon, \varepsilon)$
+
+\vspace{10em}
 
 \subsection{CFG zu Kellerautomat}
 

@@ -498,7 +498,57 @@ Eine $\varepsilon$-freie, kontextfrei Grammatik mit folgenden Regeln:
 
 \subsection{Konvertierung}
 
-!!!TODO!!!
+\subsubsection{CNF $\rightarrow$ Greibach}
+
+Beispiel:
+
+\vspace{0.5em}
+
+S $\rightarrow$ AB | BC \\
+A $\rightarrow$ a \\
+B $\rightarrow$ b \\
+C $\rightarrow$ c \\
+
+\vspace{0.5em}
+
+\begin{itemize}
+    \item Die 3 letzteren Regeln sind bereits in der Greibach Normalform,\\ da A $\rightarrow$ a $=$ A $\rightarrow$ a$\varepsilon$
+    \item S $\rightarrow$ AB ist nicht in der GNF. Wir müssen sie umschreiben, damit es ein Terminal als erstes Symbol hat
+    \item Wir wissen, dass: A $\rightarrow$ a 
+    \item Deshalb kann AB umgeschrieben werden als: AB $\rightarrow$ aB
+    \item S wird also zu: S $\rightarrow$ aB | BC
+    \item Das selbe mit B, da B $\rightarrow$ b:
+    \item S wird also zu: S $\rightarrow$ aB | bC
+\end{itemize}
+
+Konvertierte Greibach Normalform:
+
+S $\rightarrow$ aB | bC \\
+A $\rightarrow$ a \\
+B $\rightarrow$ b \\
+C $\rightarrow$ c \\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \newpage
 

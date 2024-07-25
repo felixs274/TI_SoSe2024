@@ -485,6 +485,37 @@ Konfiguration eines PDA gegeben durch 3-Tupel ($Q$, $\Sigma^*$, $\Gamma^*$):
 \newpage
 
 
+\subsection{CFG zu Kellerautomat}
+
+Beispiel:
+
+\vspace{0.5em}
+
+$S \rightarrow ASbb$ | $bT$
+
+$T \rightarrow Tba$ | $Sb$ | $\varepsilon$
+
+\vspace{0.5em}
+
+Kellerautomat besteht aus nur einem Zustand!
+
+\vspace{0.5em}
+
+"Ubergansfunktionen:
+\begin{itemize}
+    \item $\delta(q_0, \varepsilon, S) = (q_0, aSbb)$
+    \item $\delta(q_0, \varepsilon, S) = (q_0, bT)$
+    \item $\delta(q_0, \varepsilon, T) = (q_0, Tba)$
+    \item $\delta(q_0, \varepsilon, T) = (q_0, Sb)$
+    \item $\delta(q_0, \varepsilon, T) = (q_0, \varepsilon)$
+    \item $\delta(q_0, a, a) = (q_0, \varepsilon)$
+    \item $\delta(q_0, b, b) = (q_0, \varepsilon)$
+\end{itemize}
+
+
+
+\newpage
+
 
 \section{CYK-Algorithmus}
 

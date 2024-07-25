@@ -477,6 +477,8 @@ Beispiel Tabelle \{$q$, $q'$\}, $q \neq q'$:
 
 \section{Kontextfreie Sprachen ($\mathcal{L}2 $)}
 
+Die Dyck-Sprache $D_n$ ist immer Kontextfrei!
+
 \subsection{Chomsky Normalform (CNF)}
 
 Regeln m"ussen folgende Formen haben:
@@ -527,24 +529,6 @@ S $\rightarrow$ aB | bC \\
 A $\rightarrow$ a \\
 B $\rightarrow$ b \\
 C $\rightarrow$ c \\
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -601,7 +585,7 @@ Konfiguration eines PDA gegeben durch 3-Tupel ($Q$, $\Sigma^*$, $\Gamma^*$):
 
 "Ubergansfunktion:
 \begin{itemize}
-    \item $\delta$(q, a, A) $\ni$ ($q', B_1B_2...B_k$)
+    \item $\delta$(q, a, A) $\ni$ ($q', B_1B_2...B_k$) \textit{$\rightarrow B_1$ steht oben im Stack, $B_k$ ganz unten}
     \item Wenn Automat in Zustand q ist, das Symbol a liest und A oben auf Stack liegt, wechselt er in Zustand $q'$ und ersetzt das A auf dem Stack durch $B_1B_2...B_k$
 \end{itemize}
 
@@ -761,5 +745,29 @@ Angenommen, wir haben ein formales System mit den Symbolen \{a, b, c\} denen wir
 \end{itemize}
 
 Die Sequenz 'a, b, c' wird zu der Zahl $2^1 \times e^2 \times 5^3 = 2 \times 9 \times 125 = 2250$ codiert.
+
+\newpage
+
+\section{H"aufige Fragen}
+
+\begin{itemize}
+    \item $P \subset NP$ 
+    \item Eine Turing-Maschine, die eine Sprache M akzeptiert, kann in eine Endlosschleife geraten
+    \item F"ur eine regul"are Sprache L "uber dem Alphabet $\Sigma$ gilt $L \cup \overline{L} = \Sigma^+$ \rd{$\mathcal{X}$}
+    \item Die regul"aren Ausdr"ucke $(a^*b^*)$ und $(a^*b)^*$ sind "aquivalent
+    \item $\forall x \in NP : S_{AT} \leq_p x$
+    \item Es gibt einen Minimalautomaten mit genau einem Zustand
+    \item Eine Gödelisierung c(M) ist surjektiv
+    \item Ein Kellerautomat kann nicht in eine Endlosschleife geraten
+    \item $L_1 \in \mathcal{L}3 \land L_2 \in \mathcal{L}3 \Rightarrow L_1 \cap L_2 \in \mathcal{L}3$  \gr{$\surd $}
+    \item Die Dyck-Sprache $D_1$ ist kontextfrei. \gr{$\surd $}
+    \item Ein mit der Methode von Myhill und Nerode konstruierter Minimalautomat kann unendlich viele Zustände besitzen \rd{$\mathcal{X}$}
+    \item Jede Mehrband-Turingmaschine kann mit linearem Zeit-Overhead durch eine Einband-Maschine simuliert werden
+    \item Die charakteristische Funktion einer TM, die eine Sprache M entscheidet, ist berechenbar
+    \item Ein Kellerautomat kann in eine Endlosschleife geraten
+    \item Der CYK-Algorithmus kann regul"are Sprachen entscheiden \gr{$\surd $}
+\end{itemize}
+
+
 
 \end{document}
